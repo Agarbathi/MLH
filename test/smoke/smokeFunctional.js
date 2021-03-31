@@ -1,12 +1,12 @@
 import sel from '../../data/selectors';
 import {name, gender, age, story} from '../../data/testData'
-import inputValues4 from '../../helpers/metods';
+import inputValues4 from '../../helpers/methods';
 
-describe('Required fields and story created', function () { //define sub-suite title by passing a string
+ describe('Required fields and story created', function () { //define sub-suite title by passing a string
 
     before('Open App', function (){
         browser.url('');
-    })
+    });
 
     it('TC-026 Submit button is enabled after fields 1-4 are filled in with valid values', function () {
         $(sel.name).setValue(name.default);
@@ -18,12 +18,12 @@ describe('Required fields and story created', function () { //define sub-suite t
         expect(submitBtn).toEqual(true);
     });
 
-    it('TC-027 User can create a story with valid values' , function () {
-        browser.refresh();
-        inputValues4(name.default, gender.she, age.default, story.comedy);
-
-        let tryAgainBtn = $(sel.tryAgain).isDisplayed();
-        expect(tryAgainBtn).toEqual(true);
-    });
+     it('TC-027 User can create a story with valid values', function () {
+         browser.refresh();
+         inputValues4(name.default, gender.it, age.default, story.comedy);
+         $(sel.submit).click();
+         let tryAgainBtn = $(sel.tryAgain).isDisplayed();
+         expect(tryAgainBtn).toEqual(true);
+     });
 
 });
