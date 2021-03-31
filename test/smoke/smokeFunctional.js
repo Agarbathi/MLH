@@ -1,6 +1,5 @@
 import sel from '../../data/selectors';
-import exp from '../../data/expected.json';
-
+import {name, gender, age, story} from '../../data/testData'
 describe('Required fields and story created', function () { //define sub-suite title by passing a string
 
     before('Open App', function (){
@@ -8,15 +7,15 @@ describe('Required fields and story created', function () { //define sub-suite t
     })
 
     it('TC-026 Submit button is enabled after fields 1-4 are filled in with valid values', function () {
-        $(sel.name).setValue('LadyBug007');
-        $$(sel.radioButtons)[1].click();
-        $(sel.age).setValue('1234567890');
+        $(sel.name).setValue(name.default);
+        $$(sel.radioButtons)[gender.she].click();
+        $(sel.age).setValue(age.default);
         $(sel.storyType).click();
-        $$(sel.storyList)[6].click();
+        $$(sel.storyList)[story.comedy].click();
         let submitBtn = $(sel.submit).isEnabled();
         expect(submitBtn).toEqual(true);
     });
-    it('TC-027 User can create a story with valid values', function () {
+    it('TC-027 User can create a story with valid values' , function () {
         browser.refresh();
 
         $(sel.name).setValue('LadyBug007');
