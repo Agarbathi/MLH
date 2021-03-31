@@ -21,6 +21,5 @@ const story = {
     "comedy": 6
 }
 
-}
 
 module.exports = {name, gender, age, story};
